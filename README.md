@@ -1,0 +1,2 @@
+# defyn
+Define property descriptor.
