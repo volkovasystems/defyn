@@ -1,6 +1,6 @@
 {
   "name": "defyn",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Define property descriptor.",
   "main": "defyn.deploy.js",
   "support": "defyn.support.js",
@@ -23,19 +23,19 @@
     "tests"
   ],
   "resolutions": {
-    "kein": "^0.23.0",
     "wichevr": "^0.9.0",
+    "kein": "^0.23.0",
     "fnamed": "^0.6.0",
     "raze": "^0.29.0",
-    "fname": "^0.5.0",
     "doubt": "^0.26.0",
-    "stringe": "^0.3.0",
-    "mtch": "^0.1.0"
+    "fname": "^0.5.0",
+    "mtch": "^0.1.0",
+    "stringe": "^0.3.0"
   },
   "dependencies": {
     "allkey": "^0.0.0",
     "anykey": "^0.0.0",
-    "asyum": "^0.1.0",
+    "asyum": "^0.3.0",
     "dscrb": "^0.1.0",
     "falzy": "^0.19.0",
     "harden": "^0.21.0",

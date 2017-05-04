@@ -167,9 +167,9 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-asyum@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/asyum/-/asyum-0.1.0.tgz#ce04b5c9be519fb925749eb3d832d934e3a1617b"
+asyum@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/asyum/-/asyum-0.3.0.tgz#5cad03d37d24cb8b739c2ea12a3cc794c72438d1"
   dependencies:
     annon "^0.4.0"
     babel-runtime "^6.23.0"
