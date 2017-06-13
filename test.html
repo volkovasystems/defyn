@@ -1,8 +1,45 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<script
-			type="application/javascript"
-			src="./defyn.deploy.js">
-		</script>
+		<title>defyn unit test</title>
+
+		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+
+		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+
+		<script type="application/javascript" src="./defyn.deploy.js"></script>
+
+		<script type="application/javascript" src="./bower_components/dscrb/dscrb.deploy.js"></script>
+
 	</head>
+
+	<body>
+		<div id="qunit"></div>
+
+		<div id="qunit-fixture"></div>
+
+		<script type="application/javascript">
+			QUnit.test( "defyn unit test", function( assert ) {
+
+				let test = { };
+				let definition = defyn( "property", test );
+
+				assert.ok( definition.define( {
+					"value": "value",
+					"writable": true
+				} ) );
+
+				assert.equal( test.property, "value", "should be equal to 'value'" );
+
+				let dataA = { "sampleA": "valueA" };
+				let dataB = { };
+
+				let descriptor = dscrb( "sampleA", dataA );
+				defyn( "sampleA", dataB ).define( descriptor );
+
+				assert.equal( dataB.sampleA, "valueA", "should be equal to 'valueA'" );
+
+			} );
+		</script>
+	</body>
 </html>
