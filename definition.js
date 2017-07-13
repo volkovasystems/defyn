@@ -138,7 +138,7 @@ Definition = function () {
 		} }, { key: "get", value: function get(
 
 		method) {
-			if (falzy(method) || !protype(method, FUNCTION)) {
+			if (falzy(method) || typeof method != "function") {
 				throw new Error("invalid get method");
 			}
 
@@ -148,7 +148,7 @@ Definition = function () {
 		} }, { key: "set", value: function set(
 
 		method) {
-			if (falzy(method) || !protype(method, FUNCTION)) {
+			if (falzy(method) || typeof method != "function") {
 				throw new Error("invalid set method");
 			}
 
@@ -168,7 +168,7 @@ Definition = function () {
 				return this.writable(true);
 			}
 
-			if (!protype(state, BOOLEAN)) {
+			if (typeof state != "boolean") {
 				throw new Error("invalid writable state");
 			}
 
@@ -182,7 +182,7 @@ Definition = function () {
 				return this.configurable(true);
 			}
 
-			if (!protype(state, BOOLEAN)) {
+			if (typeof state != "boolean") {
 				throw new Error("invalid configurable state");
 			}
 
@@ -196,7 +196,7 @@ Definition = function () {
 				return this.enumerable(true);
 			}
 
-			if (!protype(state, BOOLEAN)) {
+			if (typeof state != "boolean") {
 				throw new Error("invalid enumerable state");
 			}
 

@@ -138,7 +138,7 @@ class Definition {
 	}
 
 	get( method ){
-		if( falzy( method ) || !protype( method, FUNCTION ) ){
+		if( falzy( method ) || typeof method != "function" ){
 			throw new Error( "invalid get method" );
 		}
 
@@ -148,7 +148,7 @@ class Definition {
 	}
 
 	set( method ){
-		if( falzy( method ) || !protype( method, FUNCTION ) ){
+		if( falzy( method ) || typeof method != "function" ){
 			throw new Error( "invalid set method" );
 		}
 
@@ -168,7 +168,7 @@ class Definition {
 			return this.writable( true );
 		}
 
-		if( !protype( state, BOOLEAN ) ){
+		if( typeof state != "boolean" ){
 			throw new Error( "invalid writable state" );
 		}
 
@@ -182,7 +182,7 @@ class Definition {
 			return this.configurable( true );
 		}
 
-		if( !protype( state, BOOLEAN ) ){
+		if( typeof state != "boolean" ){
 			throw new Error( "invalid configurable state" );
 		}
 
@@ -196,7 +196,7 @@ class Definition {
 			return this.enumerable( true );
 		}
 
-		if( !protype( state, BOOLEAN ) ){
+		if( typeof state != "boolean" ){
 			throw new Error( "invalid enumerable state" );
 		}
 
