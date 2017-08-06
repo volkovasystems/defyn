@@ -4,6 +4,7 @@ const defyn = require( "./defyn.js" );
 const dscrb = require( "dscrb" );
 const Definition = require( "./definition.js" );
 
+let duration = Date.now( );
 let test = { };
 let definition = defyn( "property", test );
 
@@ -24,4 +25,4 @@ defyn( "sampleA", dataB ).define( descriptor );
 
 assert.equal( dataB.sampleA, "valueA", "should be equal to 'valueA'" );
 
-console.log( "ok" );
+console.log( "ok", Date.now( ) - duration, "ms" );

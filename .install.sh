@@ -9,7 +9,6 @@ harden \
 kein \
 protype \
 truly \
-wichevr \
 zelf \
 --save && \
 yarn add \
@@ -30,7 +29,6 @@ harden \
 kein \
 protype \
 truly \
-wichevr \
 zelf \
 --save \
 --force-latest

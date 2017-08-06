@@ -65,8 +65,7 @@
 			"harden": "harden",
 			"kein": "kein",
 			"protype": "protype",
-			"truly": "truly",
-			"wichevr": "wichevr"
+			"truly": "truly"
 		}
 	@end-include
 */
@@ -80,7 +79,6 @@ const harden = require( "harden" );
 const kein = require( "kein" );
 const protype = require( "protype" );
 const truly = require( "truly" );
-const wichevr = require( "wichevr" );
 
 const PROPERTY = Symbol( "property" );
 const ENTITY = Symbol( "entity" );
@@ -111,10 +109,10 @@ class Definition {
 				if( anykey( [ "value", "writable" ], this ) ){
 					return {
 						"value": this.value,
-						"writable": wichevr( this.writable, true ),
+						"writable": this.writable === true,
 
-						"configurable": wichevr( this.configurable, true ),
-						"enumerable": wichevr( this.enumerable, true )
+						"configurable": this.configurable === true,
+						"enumerable": this.enumerable === true
 					};
 				}
 
@@ -123,8 +121,8 @@ class Definition {
 						"get": this.get,
 						"set": this.set,
 
-						"configurable": wichevr( this.configurable, true ),
-						"enumerable": wichevr( this.enumerable, true )
+						"configurable": this.configurable === true,
+						"enumerable": this.enumerable === true
 					};
 				}
 
@@ -132,7 +130,12 @@ class Definition {
 			} ).resolve( );
 		}
 
-		Object.defineProperty( this[ ENTITY ], this[ PROPERTY ], this[ DESCRIPTOR ] );
+		try{
+			Object.defineProperty( this[ ENTITY ], this[ PROPERTY ], this[ DESCRIPTOR ] );
+
+		}catch( error ){
+			throw new Error( `cannot apply definition, ${ error.stack }` );
+		}
 
 		return this;
 	}
