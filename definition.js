@@ -65,8 +65,7 @@
               			"harden": "harden",
               			"kein": "kein",
               			"protype": "protype",
-              			"truly": "truly",
-              			"wichevr": "wichevr"
+              			"truly": "truly"
               		}
               	@end-include
               */var _stringify = require("babel-runtime/core-js/json/stringify");var _stringify2 = _interopRequireDefault(_stringify);var _defineProperty = require("babel-runtime/core-js/object/define-property");var _defineProperty2 = _interopRequireDefault(_defineProperty);var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);var _createClass2 = require("babel-runtime/helpers/createClass");var _createClass3 = _interopRequireDefault(_createClass2);var _symbol = require("babel-runtime/core-js/symbol");var _symbol2 = _interopRequireDefault(_symbol);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
@@ -80,7 +79,6 @@ var harden = require("harden");
 var kein = require("kein");
 var protype = require("protype");
 var truly = require("truly");
-var wichevr = require("wichevr");
 
 var PROPERTY = (0, _symbol2.default)("property");
 var ENTITY = (0, _symbol2.default)("entity");
@@ -111,10 +109,10 @@ Definition = function () {
 					if (anykey(["value", "writable"], this)) {
 						return {
 							"value": this.value,
-							"writable": wichevr(this.writable, true),
+							"writable": this.writable === true,
 
-							"configurable": wichevr(this.configurable, true),
-							"enumerable": wichevr(this.enumerable, true) };
+							"configurable": this.configurable === true,
+							"enumerable": this.enumerable === true };
 
 					}
 
@@ -123,8 +121,8 @@ Definition = function () {
 							"get": this.get,
 							"set": this.set,
 
-							"configurable": wichevr(this.configurable, true),
-							"enumerable": wichevr(this.enumerable, true) };
+							"configurable": this.configurable === true,
+							"enumerable": this.enumerable === true };
 
 					}
 
@@ -132,7 +130,12 @@ Definition = function () {
 				}).resolve();
 			}
 
-			(0, _defineProperty2.default)(this[ENTITY], this[PROPERTY], this[DESCRIPTOR]);
+			try {
+				(0, _defineProperty2.default)(this[ENTITY], this[PROPERTY], this[DESCRIPTOR]);
+
+			} catch (error) {
+				throw new Error("cannot apply definition, " + error.stack);
+			}
 
 			return this;
 		} }, { key: "get", value: function get(
