@@ -8,7 +8,7 @@ let duration = Date.now( );
 let test = { };
 let definition = defyn( "property", test );
 
-assert.equal( definition instanceof Definition, true, "should be true" );
+assert.equal( definition instanceof Definition, true, "should be equal to true" );
 
 assert.ok( definition.define( {
 	"value": "value",
