@@ -1,0 +1,46 @@
+{
+	"stats": {
+		"suites": 3,
+		"tests": 2,
+		"passes": 2,
+		"pending": 0,
+		"failures": 0,
+		"start": "2017-08-28T09:19:16.024Z",
+		"end": "2017-08-28T09:19:16.037Z",
+		"duration": 13
+	},
+	"tests": [
+		{
+			"title": "should return an instance of Definition",
+			"fullTitle": "defyn `defyn( 'property', { } )` should return an instance of Definition",
+			"duration": 2,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should define properly",
+			"fullTitle": "defyn `defyn( 'property', { } ).define( { 'value': 123, 'configurable': false } )` should define properly",
+			"duration": 3,
+			"currentRetry": 0,
+			"err": {}
+		}
+	],
+	"pending": [],
+	"failures": [],
+	"passes": [
+		{
+			"title": "should return an instance of Definition",
+			"fullTitle": "defyn `defyn( 'property', { } )` should return an instance of Definition",
+			"duration": 2,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should define properly",
+			"fullTitle": "defyn `defyn( 'property', { } ).define( { 'value': 123, 'configurable': false } )` should define properly",
+			"duration": 3,
+			"currentRetry": 0,
+			"err": {}
+		}
+	]
+}

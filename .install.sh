@@ -1,34 +1,46 @@
 yarn add \
 babel-runtime \
-allkey \
 anykey \
-asyum \
-dscrb \
+depher \
+detr \
 falzy \
 harden \
 kein \
-protype \
-truly \
+wichevr \
 zelf \
 --save && \
 yarn add \
 babel-cli \
 babel-core \
+babel-preset-env \
 babel-plugin-transform-runtime \
-babel-preset-latest \
+electron \
+gulp \
+gulp-babel \
+gulp-changed \
+gulp-debug \
+gulp-plumber \
+gulp-rename \
+gulp-replace \
+gulp-sourcemaps \
+mocha \
+should \
 source-map-loader \
+wdio-json-reporter \
+wdio-mocha-framework \
+wdio-selenium-standalone-service \
+webdriverio \
 webpack \
+yargs \
 --dev && \
 bower install \
-allkey \
 anykey \
-asyum \
-dscrb \
+depher \
+detr \
 falzy \
 harden \
 kein \
-protype \
-truly \
+wichevr \
 zelf \
 --save \
 --force-latest

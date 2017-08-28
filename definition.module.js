@@ -49,36 +49,26 @@
 	@submodule-documentation:
 		Definition class wrapper.
 
-		By default, descriptor is enumerable and configurable,
-			and data descriptor will be writable.
-
-		This class should not care what is the type of the descriptor.
 	@end-submodule-documentation
 
 	@include:
 		{
-			"allkey": "allkey",
 			"anykey": "anykey",
-			"asyum": "asyum",
-			"dscrb": "dscrb",
+			"depher": "depher",
+			"detr": "detr",
 			"falzy": "falzy",
-			"harden": "harden",
 			"kein": "kein",
-			"protype": "protype",
-			"truly": "truly"
+			"wichevr": "wichevr"
 		}
 	@end-include
 */
 
-const allkey = require( "allkey" );
 const anykey = require( "anykey" );
-const asyum = require( "asyum" );
-const dscrb = require( "dscrb" );
+const depher = require( "depher" );
+const detr = require( "detr" );
 const falzy = require( "falzy" );
-const harden = require( "harden" );
 const kein = require( "kein" );
-const protype = require( "protype" );
-const truly = require( "truly" );
+const wichevr = require( "wichevr" );
 
 const PROPERTY = Symbol( "property" );
 const ENTITY = Symbol( "entity" );
@@ -86,7 +76,27 @@ const DESCRIPTOR = Symbol( "descriptor" );
 
 class Definition {
 	constructor( property, entity ){
-		if( falzy( property ) || !protype( property, NUMBER + STRING + SYMBOL ) ){
+		/*;
+			@meta-configuration:
+				{
+					"property:required": [
+						"number"
+						"string",
+						"symbol"
+					],
+					"entity": "*"
+				}
+			@end-meta-configuration
+		*/
+
+		if(
+			falzy( property )
+			|| (
+				typeof property != "number"
+				&& typeof property != "string"
+				&& typeof property != "symbol"
+			)
+		){
 			throw new Error( "invalid property" );
 		}
 
@@ -94,44 +104,97 @@ class Definition {
 			throw new Error( "invalid entity" );
 		}
 
+		if( Object.isFrozen( entity ) ){
+			throw new Error( "cannot define on frozen entity" );
+		}
+
+		if( Object.isSealed( entity ) ){
+			throw new Error( "cannot define on sealed entity" );
+		}
+
 		this[ PROPERTY ] = property;
 		this[ ENTITY ] = entity;
-		this[ DESCRIPTOR ] = { "enumerable": true, "configurable": true };
+
+		if(
+			kein( this[ PROPERTY ], this[ ENTITY ] )
+			&& this.descriptor.configurable === false
+		){
+			throw new Error( "cannot define non-configurable existing property" );
+		}
+
+		this[ DESCRIPTOR ] = {
+			"enumerable": true,
+			"configurable": true,
+			"PRIVATE_PROPERTY": Symbol( `-${ this[ PROPERTY ] }` )
+		};
 	}
 
 	define( descriptor ){
-		if( !allkey( [ PROPERTY, ENTITY ], this ) ){
-			throw new Error( "cannot define flushed definition" );
-		}
-
-		if( truly( descriptor ) ){
-			this[ DESCRIPTOR ] = asyum( descriptor, "Descriptor", function resolve( ){
-				if( anykey( [ "value", "writable" ], this ) ){
-					return {
-						"value": this.value,
-						"writable": this.writable === true,
-
-						"configurable": this.configurable === true,
-						"enumerable": this.enumerable === true
-					};
+		/*;
+			@meta-configuration:
+				{
+					"descriptor": "object"
 				}
-
-				if( anykey( [ "get", "set" ], this ) ){
-					return {
-						"get": this.get,
-						"set": this.set,
-
-						"configurable": this.configurable === true,
-						"enumerable": this.enumerable === true
-					};
-				}
-
-				return { };
-			} ).resolve( );
-		}
+			@end-meta-configuration
+		*/
 
 		try{
-			Object.defineProperty( this[ ENTITY ], this[ PROPERTY ], this[ DESCRIPTOR ] );
+			Object.defineProperty( this[ ENTITY ], this[ PROPERTY ],
+				detr( descriptor, ( function defer( descriptor ){
+					if(
+						anykey( [ "get", "set" ], descriptor )
+						|| anykey( [ "get", "set" ], this[ DESCRIPTOR ] )
+					){
+						let self = this;
+
+						return {
+							"get": depher( [
+								descriptor.get,
+								this[ DESCRIPTOR ].get
+							], FUNCTION, function get( ){
+								return self[ ENTITY ][ self[ DESCRIPTOR ].PRIVATE_PROPERTY ];
+							} ),
+
+							"set": depher( [
+								descriptor.set,
+								this[ DESCRIPTOR ].set
+							], FUNCTION, function set( value ){
+								self[ ENTITY ][ self[ DESCRIPTOR ].PRIVATE_PROPERTY ] = value;
+
+								return self[ ENTITY ];
+							} ),
+
+							"configurable": depher( [
+								descriptor.configurable,
+								this[ DESCRIPTOR ].configurable
+							], BOOLEAN, true ),
+
+							"enumerable": depher( [
+								descriptor.enumerable,
+								this[ DESCRIPTOR ].enumerable
+							], BOOLEAN, true )
+						};
+					}
+
+					return {
+						"value": wichevr( descriptor.value, this[ DESCRIPTOR ].value ),
+
+						"writable": depher( [
+							descriptor.writable,
+							this[ DESCRIPTOR ].writable
+						], BOOLEAN, true ),
+
+						"configurable": depher( [
+							descriptor.configurable,
+							this[ DESCRIPTOR ].configurable
+						], BOOLEAN, true ),
+
+						"enumerable": depher( [
+							descriptor.enumerable,
+							this[ DESCRIPTOR ].enumerable
+						], BOOLEAN, true )
+					};
+				} ).bind( this ) ) );
 
 		}catch( error ){
 			throw new Error( `cannot apply definition, ${ error.stack }` );
@@ -141,8 +204,17 @@ class Definition {
 	}
 
 	get( method ){
-		if( falzy( method ) || typeof method != "function" ){
-			throw new Error( "invalid get method" );
+		if( arguments.length == 0 ){
+		 	let self = this;
+			this[ DESCRIPTOR ].get = function get( ){
+				return self[ ENTITY ][ self[ DESCRIPTOR ].PRIVATE_PROPERTY ];
+			};
+
+			return this;
+		}
+
+		if( typeof method != "function" ){
+			throw new Error( "invalid set method" );
 		}
 
 		this[ DESCRIPTOR ].get = method;
@@ -151,7 +223,18 @@ class Definition {
 	}
 
 	set( method ){
-		if( falzy( method ) || typeof method != "function" ){
+		if( arguments.length == 0 ){
+			let self = this;
+			this[ DESCRIPTOR ].set = function set( value ){
+				self[ ENTITY ][ self[ DESCRIPTOR ].PRIVATE_PROPERTY ] = value;
+
+				return self[ ENTITY ];
+			};
+
+			return this;
+		}
+
+		if( typeof method != "function" ){
 			throw new Error( "invalid set method" );
 		}
 
@@ -166,9 +249,18 @@ class Definition {
 		return this;
 	}
 
+	/*;
+		@method-documentation:
+			Accessor descriptors takes higher precedence,
+				therefore the writability state will be overridden
+				if any accessor descriptor properties exists.
+		@end-method-documentation
+	*/
 	writable( state ){
-		if( falzy( state ) ){
-			return this.writable( true );
+		if( arguments.length == 0 ){
+			this[ DESCRIPTOR ].writable = true;
+
+			return this;
 		}
 
 		if( typeof state != "boolean" ){
@@ -181,8 +273,10 @@ class Definition {
 	}
 
 	configurable( state ){
-		if( falzy( state ) ){
-			return this.configurable( true );
+		if( arguments.length == 0 ){
+			this[ DESCRIPTOR ].configurable = true;
+
+			return this;
 		}
 
 		if( typeof state != "boolean" ){
@@ -195,8 +289,10 @@ class Definition {
 	}
 
 	enumerable( state ){
-		if( falzy( state ) ){
-			return this.enumerable( true );
+		if( arguments.length == 0 ){
+			this[ DESCRIPTOR ].enumerable = true;
+
+			return this;
 		}
 
 		if( typeof state != "boolean" ){
@@ -208,42 +304,13 @@ class Definition {
 		return this;
 	}
 
-	flush( ){
-		delete this[ ENTITY ];
-		delete this[ PROPERTY ];
-
-		return this;
-	}
-
-	describe( ){
-		if( !allkey( [ PROPERTY, ENTITY ], this ) ){
-			return { };
-		}
-
-		if( !kein( this[ PROPERTY ], this[ ENTITY ] ) ){
-			return { };
-		}
-
-		let descriptor = dscrb( this[ PROPERTY ], this[ ENTITY ] );
-
+	get descriptor( ){
 		try{
-			return descriptor.resolve( );
+			return Object.freeze( Object.getOwnPropertyDescriptor( this[ ENTITY ], this[ PROPERTY ] ) );
 
-		}finally{
-			descriptor.flush( );
+		}catch( error ){
+			return Object.freeze( { } );
 		}
-	}
-
-	toJSON( ){
-		return this.describe( );
-	}
-
-	valueOf( ){
-		return this.describe( );
-	}
-
-	toString( ){
-		return JSON.stringify( this.toJSON( ) );
 	}
 }
 

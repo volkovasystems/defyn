@@ -1,252 +1,317 @@
 "use strict";
 
 /*;
-              	@submodule-license:
-              		The MIT License (MIT)
-              		@mit-license
-              
-              		Copyright (@c) 2017 Richeve Siodina Bebedor
-              		@email: richeve.bebedor@gmail.com
-              
-              		Permission is hereby granted, free of charge, to any person obtaining a copy
-              		of this software and associated documentation files (the "Software"), to deal
-              		in the Software without restriction, including without limitation the rights
-              		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-              		copies of the Software, and to permit persons to whom the Software is
-              		furnished to do so, subject to the following conditions:
-              
-              		The above copyright notice and this permission notice shall be included in all
-              		copies or substantial portions of the Software.
-              
-              		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-              		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-              		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-              		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-              		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-              		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-              		SOFTWARE.
-              	@end-submodule-license
-              
-              	@submodule-configuration:
-              		{
-              			"package": "defyn",
-              			"path": "defyn/definition.module.js",
-              			"file": "definition.module.js",
-              			"module": "defyn",
-              			"author": "Richeve S. Bebedor",
-              			"eMail": "richeve.bebedor@gmail.com",
-              			"contributors": [
-              				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-              				"Vinse Vinalon <vinsevinalon@gmail.com>"
-              			],
-              			"repository": "https://github.com/volkovasystems/defyn.git",
-              			"test": "defyn-test.js",
-              			"class": true,
-              			"global": false
-              		}
-              	@end-submodule-configuration
-              
-              	@submodule-documentation:
-              		Definition class wrapper.
-              
-              		By default, descriptor is enumerable and configurable,
-              			and data descriptor will be writable.
-              
-              		This class should not care what is the type of the descriptor.
-              	@end-submodule-documentation
-              
-              	@include:
-              		{
-              			"allkey": "allkey",
-              			"anykey": "anykey",
-              			"asyum": "asyum",
-              			"dscrb": "dscrb",
-              			"falzy": "falzy",
-              			"harden": "harden",
-              			"kein": "kein",
-              			"protype": "protype",
-              			"truly": "truly"
-              		}
-              	@end-include
-              */var _stringify = require("babel-runtime/core-js/json/stringify");var _stringify2 = _interopRequireDefault(_stringify);var _defineProperty = require("babel-runtime/core-js/object/define-property");var _defineProperty2 = _interopRequireDefault(_defineProperty);var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);var _createClass2 = require("babel-runtime/helpers/createClass");var _createClass3 = _interopRequireDefault(_createClass2);var _symbol = require("babel-runtime/core-js/symbol");var _symbol2 = _interopRequireDefault(_symbol);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+	@submodule-license:
+		The MIT License (MIT)
+		@mit-license
 
-var allkey = require("allkey");
-var anykey = require("anykey");
-var asyum = require("asyum");
-var dscrb = require("dscrb");
-var falzy = require("falzy");
-var harden = require("harden");
-var kein = require("kein");
-var protype = require("protype");
-var truly = require("truly");
+		Copyright (@c) 2017 Richeve Siodina Bebedor
+		@email: richeve.bebedor@gmail.com
 
-var PROPERTY = (0, _symbol2.default)("property");
-var ENTITY = (0, _symbol2.default)("entity");
-var DESCRIPTOR = (0, _symbol2.default)("descriptor");var
+		Permission is hereby granted, free of charge, to any person obtaining a copy
+		of this software and associated documentation files (the "Software"), to deal
+		in the Software without restriction, including without limitation the rights
+		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+		copies of the Software, and to permit persons to whom the Software is
+		furnished to do so, subject to the following conditions:
 
-Definition = function () {
-	function Definition(property, entity) {(0, _classCallCheck3.default)(this, Definition);
-		if (falzy(property) || !protype(property, NUMBER + STRING + SYMBOL)) {
-			throw new Error("invalid property");
+		The above copyright notice and this permission notice shall be included in all
+		copies or substantial portions of the Software.
+
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+		SOFTWARE.
+	@end-submodule-license
+
+	@submodule-configuration:
+		{
+			"package": "defyn",
+			"path": "defyn/definition.module.js",
+			"file": "definition.module.js",
+			"module": "defyn",
+			"author": "Richeve S. Bebedor",
+			"eMail": "richeve.bebedor@gmail.com",
+			"contributors": [
+				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+				"Vinse Vinalon <vinsevinalon@gmail.com>"
+			],
+			"repository": "https://github.com/volkovasystems/defyn.git",
+			"test": "defyn-test.js",
+			"class": true,
+			"global": false
+		}
+	@end-submodule-configuration
+
+	@submodule-documentation:
+		Definition class wrapper.
+
+	@end-submodule-documentation
+
+	@include:
+		{
+			"anykey": "anykey",
+			"depher": "depher",
+			"detr": "detr",
+			"falzy": "falzy",
+			"kein": "kein",
+			"wichevr": "wichevr"
+		}
+	@end-include
+*/
+
+const anykey = require( "anykey" );
+const depher = require( "depher" );
+const detr = require( "detr" );
+const falzy = require( "falzy" );
+const kein = require( "kein" );
+const wichevr = require( "wichevr" );
+
+const PROPERTY = Symbol( "property" );
+const ENTITY = Symbol( "entity" );
+const DESCRIPTOR = Symbol( "descriptor" );
+
+class Definition {
+	constructor( property, entity ){
+		/*;
+			@meta-configuration:
+				{
+					"property:required": [
+						"number"
+						"string",
+						"symbol"
+					],
+					"entity": "*"
+				}
+			@end-meta-configuration
+		*/
+
+		if(
+			falzy( property )
+			|| (
+				typeof property != "number"
+				&& typeof property != "string"
+				&& typeof property != "symbol"
+			)
+		){
+			throw new Error( "invalid property" );
 		}
 
-		if (falzy(entity)) {
-			throw new Error("invalid entity");
+		if( falzy( entity ) ){
+			throw new Error( "invalid entity" );
 		}
 
-		this[PROPERTY] = property;
-		this[ENTITY] = entity;
-		this[DESCRIPTOR] = { "enumerable": true, "configurable": true };
-	}(0, _createClass3.default)(Definition, [{ key: "define", value: function define(
+		if( Object.isFrozen( entity ) ){
+			throw new Error( "cannot define on frozen entity" );
+		}
 
-		descriptor) {
-			if (!allkey([PROPERTY, ENTITY], this)) {
-				throw new Error("cannot define flushed definition");
-			}
+		if( Object.isSealed( entity ) ){
+			throw new Error( "cannot define on sealed entity" );
+		}
 
-			if (truly(descriptor)) {
-				this[DESCRIPTOR] = asyum(descriptor, "Descriptor", function resolve() {
-					if (anykey(["value", "writable"], this)) {
+		this[ PROPERTY ] = property;
+		this[ ENTITY ] = entity;
+
+		if(
+			kein( this[ PROPERTY ], this[ ENTITY ] )
+			&& this.descriptor.configurable === false
+		){
+			throw new Error( "cannot define non-configurable existing property" );
+		}
+
+		this[ DESCRIPTOR ] = {
+			"enumerable": true,
+			"configurable": true,
+			"PRIVATE_PROPERTY": Symbol( `-${ this[ PROPERTY ] }` )
+		};
+	}
+
+	define( descriptor ){
+		/*;
+			@meta-configuration:
+				{
+					"descriptor": "object"
+				}
+			@end-meta-configuration
+		*/
+
+		try{
+			Object.defineProperty( this[ ENTITY ], this[ PROPERTY ],
+				detr( descriptor, ( function defer( descriptor ){
+					if(
+						anykey( [ "get", "set" ], descriptor )
+						|| anykey( [ "get", "set" ], this[ DESCRIPTOR ] )
+					){
+						let self = this;
+
 						return {
-							"value": this.value,
-							"writable": this.writable === true,
+							"get": depher( [
+								descriptor.get,
+								this[ DESCRIPTOR ].get
+							], FUNCTION, function get( ){
+								return self[ ENTITY ][ self[ DESCRIPTOR ].PRIVATE_PROPERTY ];
+							} ),
 
-							"configurable": this.configurable === true,
-							"enumerable": this.enumerable === true };
+							"set": depher( [
+								descriptor.set,
+								this[ DESCRIPTOR ].set
+							], FUNCTION, function set( value ){
+								self[ ENTITY ][ self[ DESCRIPTOR ].PRIVATE_PROPERTY ] = value;
 
+								return self[ ENTITY ];
+							} ),
+
+							"configurable": depher( [
+								descriptor.configurable,
+								this[ DESCRIPTOR ].configurable
+							], BOOLEAN, true ),
+
+							"enumerable": depher( [
+								descriptor.enumerable,
+								this[ DESCRIPTOR ].enumerable
+							], BOOLEAN, true )
+						};
 					}
 
-					if (anykey(["get", "set"], this)) {
-						return {
-							"get": this.get,
-							"set": this.set,
+					return {
+						"value": wichevr( descriptor.value, this[ DESCRIPTOR ].value ),
 
-							"configurable": this.configurable === true,
-							"enumerable": this.enumerable === true };
+						"writable": depher( [
+							descriptor.writable,
+							this[ DESCRIPTOR ].writable
+						], BOOLEAN, true ),
 
-					}
+						"configurable": depher( [
+							descriptor.configurable,
+							this[ DESCRIPTOR ].configurable
+						], BOOLEAN, true ),
 
-					return {};
-				}).resolve();
-			}
+						"enumerable": depher( [
+							descriptor.enumerable,
+							this[ DESCRIPTOR ].enumerable
+						], BOOLEAN, true )
+					};
+				} ).bind( this ) ) );
 
-			try {
-				(0, _defineProperty2.default)(this[ENTITY], this[PROPERTY], this[DESCRIPTOR]);
+		}catch( error ){
+			throw new Error( `cannot apply definition, ${ error.stack }` );
+		}
 
-			} catch (error) {
-				throw new Error("cannot apply definition, " + error.stack);
-			}
+		return this;
+	}
 
-			return this;
-		} }, { key: "get", value: function get(
-
-		method) {
-			if (falzy(method) || typeof method != "function") {
-				throw new Error("invalid get method");
-			}
-
-			this[DESCRIPTOR].get = method;
-
-			return this;
-		} }, { key: "set", value: function set(
-
-		method) {
-			if (falzy(method) || typeof method != "function") {
-				throw new Error("invalid set method");
-			}
-
-			this[DESCRIPTOR].set = method;
+	get( method ){
+		if( arguments.length == 0 ){
+		 	let self = this;
+			this[ DESCRIPTOR ].get = function get( ){
+				return self[ ENTITY ][ self[ DESCRIPTOR ].PRIVATE_PROPERTY ];
+			};
 
 			return this;
-		} }, { key: "value", value: function value(
+		}
 
-		_value) {
-			this[DESCRIPTOR].value = _value;
+		if( typeof method != "function" ){
+			throw new Error( "invalid set method" );
+		}
 
-			return this;
-		} }, { key: "writable", value: function writable(
+		this[ DESCRIPTOR ].get = method;
 
-		state) {
-			if (falzy(state)) {
-				return this.writable(true);
-			}
+		return this;
+	}
 
-			if (typeof state != "boolean") {
-				throw new Error("invalid writable state");
-			}
+	set( method ){
+		if( arguments.length == 0 ){
+			let self = this;
+			this[ DESCRIPTOR ].set = function set( value ){
+				self[ ENTITY ][ self[ DESCRIPTOR ].PRIVATE_PROPERTY ] = value;
 
-			this[DESCRIPTOR].writable = state;
-
-			return this;
-		} }, { key: "configurable", value: function configurable(
-
-		state) {
-			if (falzy(state)) {
-				return this.configurable(true);
-			}
-
-			if (typeof state != "boolean") {
-				throw new Error("invalid configurable state");
-			}
-
-			this[DESCRIPTOR].configurable = state;
+				return self[ ENTITY ];
+			};
 
 			return this;
-		} }, { key: "enumerable", value: function enumerable(
+		}
 
-		state) {
-			if (falzy(state)) {
-				return this.enumerable(true);
-			}
+		if( typeof method != "function" ){
+			throw new Error( "invalid set method" );
+		}
 
-			if (typeof state != "boolean") {
-				throw new Error("invalid enumerable state");
-			}
+		this[ DESCRIPTOR ].set = method;
 
-			this[DESCRIPTOR].enumerable = state;
+		return this;
+	}
+
+	value( value ){
+		this[ DESCRIPTOR ].value = value;
+
+		return this;
+	}
+
+	/*;
+		@method-documentation:
+			Accessor descriptors takes higher precedence,
+				therefore the writability state will be overridden
+				if any accessor descriptor properties exists.
+		@end-method-documentation
+	*/
+	writable( state ){
+		if( arguments.length == 0 ){
+			this[ DESCRIPTOR ].writable = true;
 
 			return this;
-		} }, { key: "flush", value: function flush()
+		}
 
-		{
-			delete this[ENTITY];
-			delete this[PROPERTY];
+		if( typeof state != "boolean" ){
+			throw new Error( "invalid writable state" );
+		}
+
+		this[ DESCRIPTOR ].writable = state;
+
+		return this;
+	}
+
+	configurable( state ){
+		if( arguments.length == 0 ){
+			this[ DESCRIPTOR ].configurable = true;
 
 			return this;
-		} }, { key: "describe", value: function describe()
+		}
 
-		{
-			if (!allkey([PROPERTY, ENTITY], this)) {
-				return {};
-			}
+		if( typeof state != "boolean" ){
+			throw new Error( "invalid configurable state" );
+		}
 
-			if (!kein(this[PROPERTY], this[ENTITY])) {
-				return {};
-			}
+		this[ DESCRIPTOR ].configurable = state;
 
-			var descriptor = dscrb(this[PROPERTY], this[ENTITY]);
+		return this;
+	}
 
-			try {
-				return descriptor.resolve();
+	enumerable( state ){
+		if( arguments.length == 0 ){
+			this[ DESCRIPTOR ].enumerable = true;
 
-			} finally {
-				descriptor.flush();
-			}
-		} }, { key: "toJSON", value: function toJSON()
+			return this;
+		}
 
-		{
-			return this.describe();
-		} }, { key: "valueOf", value: function valueOf()
+		if( typeof state != "boolean" ){
+			throw new Error( "invalid enumerable state" );
+		}
 
-		{
-			return this.describe();
-		} }, { key: "toString", value: function toString()
+		this[ DESCRIPTOR ].enumerable = state;
 
-		{
-			return (0, _stringify2.default)(this.toJSON());
-		} }]);return Definition;}();
+		return this;
+	}
 
+	get descriptor( ){
+		try{
+			return Object.freeze( Object.getOwnPropertyDescriptor( this[ ENTITY ], this[ PROPERTY ] ) );
+
+		}catch( error ){
+			return Object.freeze( { } );
+		}
+	}
+}
 
 module.exports = Definition;
-
-//# sourceMappingURL=definition.js.map

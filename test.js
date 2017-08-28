@@ -1,5 +1,7 @@
+"use strict";
+
 /*;
-	@module-license:
+	@test-license:
 		The MIT License (MIT)
 		@mit-license
 
@@ -23,67 +25,83 @@
 		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 		SOFTWARE.
-	@end-module-license
+	@end-test-license
 
-	@module-configuration:
+	@test-configuration:
 		{
 			"package": "defyn",
-			"path": "defyn/defyn.module.js",
-			"file": "defyn.module.js",
-			"module": "defyn",
+			"path": "defyn/test.module.js",
+			"file": "test.module.js",
+			"module": "test",
 			"author": "Richeve S. Bebedor",
 			"eMail": "richeve.bebedor@gmail.com",
 			"contributors": [
 				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
 				"Vinse Vinalon <vinsevinalon@gmail.com>"
 			],
-			"repository": "https://github.com/volkovasystems/defyn.git",
-			"global": true
+			"repository": "https://github.com/volkovasystems/defyn.git"
 		}
-	@end-module-configuration
+	@end-test-configuration
 
-	@module-documentation:
-		Define property descriptor.
-	@end-module-documentation
+	@test-documentation:
+
+	@end-test-documentation
 
 	@include:
 		{
-			"harden": "harden",
-			"zelf": "zelf"
+			"assert": "should",
+			"defyn": "defyn",
+			"path": "path"
 		}
 	@end-include
 */
 
-const harden = require( "harden" );
-const zelf = require( "zelf" );
+const assert = require( "should" );
 
 //: @server:
-const Definition = require( "./definition.js" );
+const defyn = require( "./defyn.js" );
 //: @end-server
 
 
 
-const defyn = function defyn( property, entity ){
-	/*;
-		@meta-configuration:
-			{
-				"property:required": [
-					"number"
-					"string",
-					"symbol"
-				],
-				"entity": "*"
-			}
-		@end-meta-configuration
-	*/
 
-	if( arguments.length == 1 ){
-		entity = zelf( this );
-	}
 
-	return Object.freeze( new Definition( property, entity ) );
-};
+//: @server:
+describe( "defyn", ( ) => {
 
-harden( "Definition",  Definition, defyn );
+	describe( "`defyn( 'property', { } )`", ( ) => {
+		it( "should return an instance of Definition", ( ) => {
+			let definition = defyn( "property", { } );
 
-module.exports = defyn;
+			assert.equal( definition instanceof defyn.Definition, true );
+		} );
+	} );
+
+	describe( "`defyn( 'property', { } ).define( { 'value': 123, 'configurable': false } )`", ( ) => {
+		it( "should define properly", ( ) => {
+			let data = { };
+			let definition = defyn( "property", data );
+			definition.define( { "value": 123, "configurable": false } );
+
+			let descriptor = definition.descriptor;
+
+			assert.equal( descriptor.value, 123 );
+
+			assert.equal( descriptor.configurable, false );
+
+			assert.equal( descriptor.enumerable, true );
+
+			assert.equal( descriptor.writable, true );
+
+			assert.equal( descriptor.get, undefined );
+
+			assert.equal( descriptor.set, undefined );
+		} );
+	} );
+
+} );
+//: @end-server
+
+
+
+

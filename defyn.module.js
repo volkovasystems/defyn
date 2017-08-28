@@ -61,7 +61,9 @@ const zelf = require( "zelf" );
 const Definition = require( "./definition.js" );
 //: @end-server
 
-
+//: @client:
+const Definition = require( "./definition.support.js" );
+//: @end-client
 
 const defyn = function defyn( property, entity ){
 	/*;
