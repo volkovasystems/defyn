@@ -1,0 +1,119 @@
+{
+	"state": {
+		"passed": 2,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-08-28T09:19:17.717Z",
+	"end": "2017-08-28T09:19:57.527Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": {
+			"proxyType": "direct"
+		}
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd",
+		"slow": 0
+	},
+	"suites": [
+		{
+			"name": "defyn",
+			"duration": 0,
+			"start": "2017-08-28T09:19:57.067Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "defyn",
+			"duration": 277,
+			"start": "2017-08-28T09:19:57.069Z",
+			"end": "2017-08-28T09:19:57.346Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-08-28T09:19:57.070Z",
+					"end": "2017-08-28T09:19:57.070Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "defyn",
+					"associatedTest": "should return an instance of Descriptor"
+				},
+				{
+					"start": "2017-08-28T09:19:57.242Z",
+					"end": "2017-08-28T09:19:57.243Z",
+					"duration": 1,
+					"title": "\"after each\" hook",
+					"associatedSuite": "defyn",
+					"associatedTest": "should return an instance of Descriptor"
+				},
+				{
+					"start": "2017-08-28T09:19:57.245Z",
+					"end": "2017-08-28T09:19:57.246Z",
+					"duration": 1,
+					"title": "\"before each\" hook",
+					"associatedSuite": "defyn",
+					"associatedTest": "should define properly"
+				},
+				{
+					"start": "2017-08-28T09:19:57.346Z",
+					"end": "2017-08-28T09:19:57.346Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "defyn",
+					"associatedTest": "should define properly"
+				},
+				{
+					"start": "2017-08-28T09:19:57.346Z",
+					"end": "2017-08-28T09:19:57.346Z",
+					"duration": 0,
+					"title": "\"after all\" hook",
+					"associatedSuite": "defyn"
+				}
+			]
+		},
+		{
+			"name": "`defyn( 'property', { } )`",
+			"duration": 175,
+			"start": "2017-08-28T09:19:57.069Z",
+			"end": "2017-08-28T09:19:57.244Z",
+			"tests": [
+				{
+					"name": "should return an instance of Descriptor",
+					"start": "2017-08-28T09:19:57.070Z",
+					"end": "2017-08-28T09:19:57.241Z",
+					"duration": 171,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`defyn( 'property', { } ).define( { 'value': 123, 'configurable': false } )`",
+			"duration": 102,
+			"start": "2017-08-28T09:19:57.244Z",
+			"end": "2017-08-28T09:19:57.346Z",
+			"tests": [
+				{
+					"name": "should define properly",
+					"start": "2017-08-28T09:19:57.245Z",
+					"end": "2017-08-28T09:19:57.346Z",
+					"duration": 101,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}
