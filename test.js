@@ -99,6 +99,59 @@ describe( "defyn", ( ) => {
 		} );
 	} );
 
+	describe( "`defyn( 0, [ ] ).define( { 'value': 1, 'configurable': false } )`", ( ) => {
+		it( "should define properly", ( ) => {
+			let data = [ ];
+			let definition = defyn( 0, data );
+			definition.define( { "value": 1, "configurable": false } );
+
+			let descriptor = definition.descriptor;
+
+			assert.equal( descriptor.value, 1 );
+
+			assert.equal( descriptor.configurable, false );
+
+			assert.equal( descriptor.enumerable, true );
+
+			assert.equal( descriptor.writable, true );
+
+			assert.equal( descriptor.get, undefined );
+
+			assert.equal( descriptor.set, undefined );
+		} );
+	} );
+
+	describe( "`defyn with string property and instance of class as entity`", ( ) => {
+		it( "should define properly", ( ) => {
+			class Orange {
+				constructor( ){ }
+
+				static orange( ){
+					return "orange";
+			    }
+			}
+
+			let orange = new Orange( )
+
+			let definition = defyn( "getApple", orange );
+			definition.define( { "value": function( ){ return "apple"; } } );
+
+			let descriptor = definition.descriptor;
+
+			assert.equal( typeof descriptor.value, "function" );
+
+			assert.equal( descriptor.configurable, true );
+
+			assert.equal( descriptor.enumerable, true );
+
+			assert.equal( descriptor.writable, true );
+
+			assert.equal( descriptor.get, undefined );
+
+			assert.equal( descriptor.set, undefined );
+		} );
+	} );
+
 } );
 //: @end-server
 
