@@ -156,6 +156,9 @@ describe( "defyn", ( ) => {
 		} );
 	} );
 
+	//let data = { };
+	//let definition = defyn( Symbol.for( "hello" ), data );
+
 } );
 //: @end-server
 
@@ -359,7 +362,7 @@ describe( "defyn", ( ) => {
 			//: @end-ignore
 
 			let descriptor = JSON.parse( result );
-			
+
 			assert.equal( descriptor.configurable, true );
 
 			assert.equal( descriptor.enumerable, true );
