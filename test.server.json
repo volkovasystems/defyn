@@ -5,15 +5,15 @@
 		"passes": 2,
 		"pending": 0,
 		"failures": 0,
-		"start": "2017-08-28T11:33:36.561Z",
-		"end": "2017-08-28T11:33:36.569Z",
-		"duration": 8
+		"start": "2017-09-04T13:28:36.796Z",
+		"end": "2017-09-04T13:28:36.805Z",
+		"duration": 9
 	},
 	"tests": [
 		{
 			"title": "should return an instance of Definition",
 			"fullTitle": "defyn `defyn( 'property', { } )` should return an instance of Definition",
-			"duration": 1,
+			"duration": 2,
 			"currentRetry": 0,
 			"err": {}
 		},
@@ -31,7 +31,7 @@
 		{
 			"title": "should return an instance of Definition",
 			"fullTitle": "defyn `defyn( 'property', { } )` should return an instance of Definition",
-			"duration": 1,
+			"duration": 2,
 			"currentRetry": 0,
 			"err": {}
 		},

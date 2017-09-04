@@ -1,6 +1,6 @@
 {
 	"name": "defyn",
-	"version": "0.9.0",
+	"version": "0.10.0",
 	"description": "Define property descriptor.",
 	"main": "defyn.js",
 	"support": "defyn.support.js",
@@ -54,6 +54,7 @@
 		"falzy": "^0.23.0",
 		"harden": "^0.23.0",
 		"kein": "^0.30.0",
+		"stringe": "^0.6.0",
 		"wichevr": "^0.14.0",
 		"zelf": "^0.14.0"
 	},
@@ -72,7 +73,7 @@
 		"gulp-replace": "^0.6.1",
 		"gulp-sourcemaps": "^2.6.1",
 		"mocha": "^3.5.0",
-		"should": "^11.2.1",
+		"should": "^12.0.0",
 		"source-map-loader": "^0.2.1",
 		"wdio-json-reporter": "^0.2.1",
 		"wdio-mocha-framework": "^0.5.11",
