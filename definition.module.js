@@ -58,6 +58,7 @@
 			"detr": "detr",
 			"falzy": "falzy",
 			"kein": "kein",
+			"stringe": "stringe",
 			"wichevr": "wichevr"
 		}
 	@end-include
@@ -68,6 +69,7 @@ const depher = require( "depher" );
 const detr = require( "detr" );
 const falzy = require( "falzy" );
 const kein = require( "kein" );
+const stringe = require( "stringe" );
 const wichevr = require( "wichevr" );
 
 const PROPERTY = Symbol( "property" );
@@ -125,7 +127,7 @@ class Definition {
 		this[ DESCRIPTOR ] = {
 			"enumerable": true,
 			"configurable": true,
-			"PRIVATE_PROPERTY": Symbol( `-${ this[ PROPERTY ] }` )
+			"PRIVATE_PROPERTY": Symbol( `-${ stringe( this[ PROPERTY ] ) }` )
 		};
 	}
 

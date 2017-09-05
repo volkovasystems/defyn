@@ -6,6 +6,7 @@ detr \
 falzy \
 harden \
 kein \
+stringe \
 wichevr \
 zelf \
 --save && \
@@ -40,6 +41,7 @@ detr \
 falzy \
 harden \
 kein \
+stringe \
 wichevr \
 zelf \
 --save \
