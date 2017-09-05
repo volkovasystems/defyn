@@ -1,19 +1,19 @@
 {
 	"stats": {
-		"suites": 5,
-		"tests": 4,
-		"passes": 4,
+		"suites": 6,
+		"tests": 5,
+		"passes": 5,
 		"pending": 0,
 		"failures": 0,
-		"start": "2017-09-04T05:07:49.085Z",
-		"end": "2017-09-04T05:07:49.098Z",
-		"duration": 13
+		"start": "2017-09-05T03:07:46.049Z",
+		"end": "2017-09-05T03:07:46.059Z",
+		"duration": 10
 	},
 	"tests": [
 		{
 			"title": "should return an instance of Definition",
 			"fullTitle": "defyn `defyn( 'property', { } )` should return an instance of Definition",
-			"duration": 2,
+			"duration": 1,
 			"currentRetry": 0,
 			"err": {}
 		},
@@ -27,6 +27,13 @@
 		{
 			"title": "should define properly",
 			"fullTitle": "defyn `defyn( 0, [ ] ).define( { 'value': 1, 'configurable': false } )` should define properly",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should define properly",
+			"fullTitle": "defyn `defyn( Symbol.for( 'hello' ), { } ).define( { 'value': Symbol.for( 'hello' ), 'configurable': false } )` should define properly",
 			"duration": 1,
 			"currentRetry": 0,
 			"err": {}
@@ -34,7 +41,7 @@
 		{
 			"title": "should define properly",
 			"fullTitle": "defyn `defyn with string property and instance of class as entity` should define properly",
-			"duration": 0,
+			"duration": 1,
 			"currentRetry": 0,
 			"err": {}
 		}
@@ -45,7 +52,7 @@
 		{
 			"title": "should return an instance of Definition",
 			"fullTitle": "defyn `defyn( 'property', { } )` should return an instance of Definition",
-			"duration": 2,
+			"duration": 1,
 			"currentRetry": 0,
 			"err": {}
 		},
@@ -59,6 +66,13 @@
 		{
 			"title": "should define properly",
 			"fullTitle": "defyn `defyn( 0, [ ] ).define( { 'value': 1, 'configurable': false } )` should define properly",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should define properly",
+			"fullTitle": "defyn `defyn( Symbol.for( 'hello' ), { } ).define( { 'value': Symbol.for( 'hello' ), 'configurable': false } )` should define properly",
 			"duration": 1,
 			"currentRetry": 0,
 			"err": {}
@@ -66,7 +80,7 @@
 		{
 			"title": "should define properly",
 			"fullTitle": "defyn `defyn with string property and instance of class as entity` should define properly",
-			"duration": 0,
+			"duration": 1,
 			"currentRetry": 0,
 			"err": {}
 		}

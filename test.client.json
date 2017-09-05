@@ -1,11 +1,11 @@
 {
 	"state": {
-		"passed": 4,
+		"passed": 5,
 		"failed": 0,
 		"skipped": 0
 	},
-	"start": "2017-09-04T05:07:50.409Z",
-	"end": "2017-09-04T05:08:26.758Z",
+	"start": "2017-09-05T03:07:47.215Z",
+	"end": "2017-09-05T03:08:35.425Z",
 	"capabilities": {
 		"browserName": "chrome",
 		"chromeOptions": {
@@ -31,85 +31,101 @@
 		{
 			"name": "defyn",
 			"duration": 0,
-			"start": "2017-09-04T05:08:26.272Z",
+			"start": "2017-09-05T03:08:34.887Z",
 			"tests": [],
 			"hooks": []
 		},
 		{
 			"name": "defyn",
-			"duration": 307,
-			"start": "2017-09-04T05:08:26.273Z",
-			"end": "2017-09-04T05:08:26.580Z",
+			"duration": 358,
+			"start": "2017-09-05T03:08:34.888Z",
+			"end": "2017-09-05T03:08:35.246Z",
 			"tests": [],
 			"hooks": [
 				{
-					"start": "2017-09-04T05:08:26.275Z",
-					"end": "2017-09-04T05:08:26.275Z",
-					"duration": 0,
+					"start": "2017-09-05T03:08:34.890Z",
+					"end": "2017-09-05T03:08:34.891Z",
+					"duration": 1,
 					"title": "\"before each\" hook",
 					"associatedSuite": "defyn",
 					"associatedTest": "should return an instance of Descriptor"
 				},
 				{
-					"start": "2017-09-04T05:08:26.421Z",
-					"end": "2017-09-04T05:08:26.421Z",
+					"start": "2017-09-05T03:08:35.015Z",
+					"end": "2017-09-05T03:08:35.015Z",
 					"duration": 0,
 					"title": "\"after each\" hook",
 					"associatedSuite": "defyn",
 					"associatedTest": "should return an instance of Descriptor"
 				},
 				{
-					"start": "2017-09-04T05:08:26.422Z",
-					"end": "2017-09-04T05:08:26.423Z",
+					"start": "2017-09-05T03:08:35.016Z",
+					"end": "2017-09-05T03:08:35.017Z",
 					"duration": 1,
 					"title": "\"before each\" hook",
 					"associatedSuite": "defyn",
 					"associatedTest": "should define properly"
 				},
 				{
-					"start": "2017-09-04T05:08:26.475Z",
-					"end": "2017-09-04T05:08:26.475Z",
+					"start": "2017-09-05T03:08:35.085Z",
+					"end": "2017-09-05T03:08:35.085Z",
 					"duration": 0,
 					"title": "\"after each\" hook",
 					"associatedSuite": "defyn",
 					"associatedTest": "should define properly"
 				},
 				{
-					"start": "2017-09-04T05:08:26.476Z",
-					"end": "2017-09-04T05:08:26.476Z",
+					"start": "2017-09-05T03:08:35.085Z",
+					"end": "2017-09-05T03:08:35.085Z",
 					"duration": 0,
 					"title": "\"before each\" hook",
 					"associatedSuite": "defyn",
 					"associatedTest": "should define properly"
 				},
 				{
-					"start": "2017-09-04T05:08:26.524Z",
-					"end": "2017-09-04T05:08:26.524Z",
+					"start": "2017-09-05T03:08:35.144Z",
+					"end": "2017-09-05T03:08:35.144Z",
 					"duration": 0,
 					"title": "\"after each\" hook",
 					"associatedSuite": "defyn",
 					"associatedTest": "should define properly"
 				},
 				{
-					"start": "2017-09-04T05:08:26.525Z",
-					"end": "2017-09-04T05:08:26.525Z",
+					"start": "2017-09-05T03:08:35.145Z",
+					"end": "2017-09-05T03:08:35.145Z",
 					"duration": 0,
 					"title": "\"before each\" hook",
 					"associatedSuite": "defyn",
 					"associatedTest": "should define properly"
 				},
 				{
-					"start": "2017-09-04T05:08:26.579Z",
-					"end": "2017-09-04T05:08:26.580Z",
-					"duration": 1,
+					"start": "2017-09-05T03:08:35.196Z",
+					"end": "2017-09-05T03:08:35.196Z",
+					"duration": 0,
 					"title": "\"after each\" hook",
 					"associatedSuite": "defyn",
 					"associatedTest": "should define properly"
 				},
 				{
-					"start": "2017-09-04T05:08:26.580Z",
-					"end": "2017-09-04T05:08:26.581Z",
-					"duration": 1,
+					"start": "2017-09-05T03:08:35.197Z",
+					"end": "2017-09-05T03:08:35.197Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "defyn",
+					"associatedTest": "should define properly"
+				},
+				{
+					"start": "2017-09-05T03:08:35.245Z",
+					"end": "2017-09-05T03:08:35.245Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "defyn",
+					"associatedTest": "should define properly"
+				},
+				{
+					"start": "2017-09-05T03:08:35.246Z",
+					"end": "2017-09-05T03:08:35.246Z",
+					"duration": 0,
 					"title": "\"after all\" hook",
 					"associatedSuite": "defyn"
 				}
@@ -117,15 +133,15 @@
 		},
 		{
 			"name": "`defyn( 'property', { } )`",
-			"duration": 149,
-			"start": "2017-09-04T05:08:26.273Z",
-			"end": "2017-09-04T05:08:26.422Z",
+			"duration": 127,
+			"start": "2017-09-05T03:08:34.889Z",
+			"end": "2017-09-05T03:08:35.016Z",
 			"tests": [
 				{
 					"name": "should return an instance of Descriptor",
-					"start": "2017-09-04T05:08:26.274Z",
-					"end": "2017-09-04T05:08:26.421Z",
-					"duration": 147,
+					"start": "2017-09-05T03:08:34.890Z",
+					"end": "2017-09-05T03:08:35.015Z",
+					"duration": 125,
 					"state": "pass"
 				}
 			],
@@ -133,15 +149,15 @@
 		},
 		{
 			"name": "`defyn( 'property', { } ).define( { 'value': 123, 'configurable': false } )`",
-			"duration": 53,
-			"start": "2017-09-04T05:08:26.422Z",
-			"end": "2017-09-04T05:08:26.475Z",
+			"duration": 69,
+			"start": "2017-09-05T03:08:35.016Z",
+			"end": "2017-09-05T03:08:35.085Z",
 			"tests": [
 				{
 					"name": "should define properly",
-					"start": "2017-09-04T05:08:26.422Z",
-					"end": "2017-09-04T05:08:26.475Z",
-					"duration": 53,
+					"start": "2017-09-05T03:08:35.016Z",
+					"end": "2017-09-05T03:08:35.085Z",
+					"duration": 69,
 					"state": "pass"
 				}
 			],
@@ -149,15 +165,31 @@
 		},
 		{
 			"name": "`defyn( 0, [ ] ).define( { 'value': 1, 'configurable': false } )`",
-			"duration": 49,
-			"start": "2017-09-04T05:08:26.475Z",
-			"end": "2017-09-04T05:08:26.524Z",
+			"duration": 59,
+			"start": "2017-09-05T03:08:35.085Z",
+			"end": "2017-09-05T03:08:35.144Z",
 			"tests": [
 				{
 					"name": "should define properly",
-					"start": "2017-09-04T05:08:26.475Z",
-					"end": "2017-09-04T05:08:26.524Z",
-					"duration": 49,
+					"start": "2017-09-05T03:08:35.085Z",
+					"end": "2017-09-05T03:08:35.144Z",
+					"duration": 59,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`defyn( Symbol.for( 'hello' ), { } ).define( { 'value': Symbol.for( 'hello' ), 'configurable': false } )`",
+			"duration": 51,
+			"start": "2017-09-05T03:08:35.145Z",
+			"end": "2017-09-05T03:08:35.196Z",
+			"tests": [
+				{
+					"name": "should define properly",
+					"start": "2017-09-05T03:08:35.145Z",
+					"end": "2017-09-05T03:08:35.196Z",
+					"duration": 51,
 					"state": "pass"
 				}
 			],
@@ -165,15 +197,15 @@
 		},
 		{
 			"name": "`defyn with string property and instance of class as entity`",
-			"duration": 56,
-			"start": "2017-09-04T05:08:26.524Z",
-			"end": "2017-09-04T05:08:26.580Z",
+			"duration": 50,
+			"start": "2017-09-05T03:08:35.196Z",
+			"end": "2017-09-05T03:08:35.246Z",
 			"tests": [
 				{
 					"name": "should define properly",
-					"start": "2017-09-04T05:08:26.524Z",
-					"end": "2017-09-04T05:08:26.579Z",
-					"duration": 55,
+					"start": "2017-09-05T03:08:35.197Z",
+					"end": "2017-09-05T03:08:35.245Z",
+					"duration": 48,
 					"state": "pass"
 				}
 			],

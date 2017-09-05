@@ -125,6 +125,28 @@ describe( "defyn", ( ) => {
 		} );
 	} );
 
+	describe( "`defyn( Symbol.for( 'hello' ), { } ).define( { 'value': Symbol.for( 'hello' ), 'configurable': false } )`", ( ) => {
+		it( "should define properly", ( ) => {
+			let data = { };
+			let definition = defyn( Symbol.for( "hello" ), data );
+			definition.define( { "value": Symbol.for( "hello" ), "configurable": false } );
+
+			let descriptor = definition.descriptor;
+
+			assert.equal( descriptor.value, Symbol.for( "hello" ) );
+
+			assert.equal( descriptor.configurable, false );
+
+			assert.equal( descriptor.enumerable, true );
+
+			assert.equal( descriptor.writable, true );
+
+			assert.equal( descriptor.get, undefined );
+
+			assert.equal( descriptor.set, undefined );
+		} );
+	} );
+
 	describe( "`defyn with string property and instance of class as entity`", ( ) => {
 		it( "should define properly", ( ) => {
 			class Orange {
@@ -155,9 +177,6 @@ describe( "defyn", ( ) => {
 			assert.equal( descriptor.set, undefined );
 		} );
 	} );
-
-	//let data = { };
-	//let definition = defyn( Symbol.for( "hello" ), data );
 
 } );
 //: @end-server
@@ -204,6 +223,28 @@ describe( "defyn", ( ) => {
 			let descriptor = definition.descriptor;
 
 			assert.equal( descriptor.value, 1 );
+
+			assert.equal( descriptor.configurable, false );
+
+			assert.equal( descriptor.enumerable, true );
+
+			assert.equal( descriptor.writable, true );
+
+			assert.equal( descriptor.get, undefined );
+
+			assert.equal( descriptor.set, undefined );
+		} );
+	} );
+
+	describe( "`defyn( Symbol.for( 'hello' ), { } ).define( { 'value': Symbol.for( 'hello' ), 'configurable': false } )`", ( ) => {
+		it( "should define properly", ( ) => {
+			let data = { };
+			let definition = defyn( Symbol.for( "hello" ), data );
+			definition.define( { "value": Symbol.for( "hello" ), "configurable": false } );
+
+			let descriptor = definition.descriptor;
+
+			assert.equal( descriptor.value, Symbol.for( "hello" ) );
 
 			assert.equal( descriptor.configurable, false );
 
@@ -336,6 +377,38 @@ describe( "defyn", ( ) => {
 		} );
 	} );
 
+	describe( "`defyn( Symbol.for( 'hello' ), { } ).define( { 'value': Symbol.for( 'hello' ), 'configurable': false } )`", ( ) => {
+		it( "should define properly", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					let data = { };
+					let definition = defyn( Symbol.for( "hello" ), data );
+					definition.define( { "value": Symbol.for( "hello" ), "configurable": false } );
+
+					return JSON.stringify( definition.descriptor );
+				}
+
+			).value;
+			//: @end-ignore
+
+			let descriptor = JSON.parse( result );
+
+			assert.equal( descriptor.value, undefined );
+
+			assert.equal( descriptor.configurable, false );
+
+			assert.equal( descriptor.enumerable, true );
+
+			assert.equal( descriptor.writable, true );
+
+			assert.equal( descriptor.get, undefined );
+
+			assert.equal( descriptor.set, undefined );
+		} );
+	} );
+
 	describe( "`defyn with string property and instance of class as entity`", ( ) => {
 		it( "should define properly", ( ) => {
 			//: @ignore:
@@ -362,6 +435,8 @@ describe( "defyn", ( ) => {
 			//: @end-ignore
 
 			let descriptor = JSON.parse( result );
+
+			assert.equal( descriptor.value, undefined );
 
 			assert.equal( descriptor.configurable, true );
 

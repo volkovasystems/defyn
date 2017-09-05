@@ -24,6 +24,9 @@
 		"test",
 		"tests"
 	],
+	"resolutions": {
+		"stringe": "^0.6.0"
+	},
 	"dependencies": {
 		"anykey": "^0.5.0",
 		"depher": "^0.38.0",
@@ -31,6 +34,7 @@
 		"falzy": "^0.23.0",
 		"harden": "^0.23.0",
 		"kein": "^0.30.0",
+		"stringe": "^0.6.0",
 		"wichevr": "^0.14.0",
 		"zelf": "^0.14.0"
 	}
